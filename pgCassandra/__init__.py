@@ -51,7 +51,7 @@ class CassandraFDW(ForeignDataWrapper):
 			self.cluster = Cluster(hosts, protocol_version=2, auth_provider=ap)
 			#self.cluster =  Cluster(hosts, auth_provider= {'username': username, 'password': password})
 		# Cassandra connection init
-		self.cluster =  Cluster(hosts)
+		#self.cluster =  Cluster(hosts)
 		self.session = self.cluster.connect()
 		if (timeout):
 			self.session.default_timeout = timeout
