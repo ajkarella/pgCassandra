@@ -3,6 +3,7 @@ from multicorn.utils import log_to_postgres, ERROR, WARNING, DEBUG, INFO
 from cassandra import ConsistencyLevel
 from cassandra.cluster import Cluster
 from cassandra.query import SimpleStatement
+from cassandra.auth import PlainTextAuthProvider
 from collections import defaultdict
 from decimal import Decimal
 import math
@@ -46,7 +47,9 @@ class CassandraFDW(ForeignDataWrapper):
 		if(username is None):
 			self.cluster =  Cluster(hosts)
 		else:
-			self.cluster =  Cluster(hosts, auth_provider= {'username': username, 'password': password})
+			ap = PlainTextAuthProvider(username=username, password=password)
+			self.cluster = Cluster(hosts, protocol_version=2, auth_provider=ap)
+			#self.cluster =  Cluster(hosts, auth_provider= {'username': username, 'password': password})
 		# Cassandra connection init
 		self.cluster =  Cluster(hosts)
 		self.session = self.cluster.connect()
