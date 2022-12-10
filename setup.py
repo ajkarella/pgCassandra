@@ -2,10 +2,10 @@ import subprocess
 from setuptools import setup, find_packages, Extension
 
 setup(
-  name='pgCassandra',
+  name='pgCassandra2',
   version='0.9.2',
   author='Wojciech Krol',
-  link = 'https://github.com/wjch-krl/pgCassandra/',
+  link = 'https://github.com/ajkarella/pgCassandra/',
   license='Postgresql',
-  packages=['pgCassandra']
+  packages=['pgCassandra2']
 )
