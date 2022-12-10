@@ -48,8 +48,8 @@ class CassandraFDW(ForeignDataWrapper):
 			self.cluster =  Cluster(hosts)
 		else:
 			ap = PlainTextAuthProvider(username=username, password=password)
-			self.cluster = Cluster(hosts, protocol_version=2, auth_provider=ap)
-			#self.cluster =  Cluster(hosts, auth_provider= {'username': username, 'password': password})
+			#self.cluster = Cluster(hosts, protocol_version=2, auth_provider=ap)
+			self.cluster =  Cluster(hosts, auth_provider= {'username': username, 'password': password})
 		# Cassandra connection init
 		#self.cluster =  Cluster(hosts)
 		self.session = self.cluster.connect()
